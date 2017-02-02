@@ -12,7 +12,7 @@ http://calccedo.blogspot.com.eg/p/blog-page.html
 
 
 
-Calculator demo built using Calccedo Engine Library
+and this is screenshot of Calculator demo built using Calccedo Engine Library
 
 Welcome to Calccedo Engine,
 
