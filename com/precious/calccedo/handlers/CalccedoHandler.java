@@ -1,4 +1,3 @@
-
 /*
  *   Calccedo Library
  *   hint this code under Apache License
@@ -15,7 +14,7 @@ import java.util.ArrayList;
  * @author Ibrahim Abdsaid Hanna 
  *         ibrahim.seniore@gmail.com
  */
-public class CalculatorHandler extends Calccedo implements Handler {
+public class CalccedoHandler extends Calccedo implements Handler {
 
     
     ArrayList<Character> list;
