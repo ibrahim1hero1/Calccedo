@@ -5,8 +5,7 @@ Calccedo Library is calculation engine library designed using Java language and 
 
 you can take tour in how Calccedo Engine library can do from this link
 
-http://calccedo.blogspot.com.eg/p/blog-page.html
-
+https://ibrahim1hero1-calccedo.blogspot.com.eg/p/blog-page.html
 
 
 
