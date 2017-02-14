@@ -1,5 +1,4 @@
-
-/*
+﻿/*
   This is simple code to help in how to use Calccedo Engine Library
 
 */
@@ -26,14 +25,15 @@ public class TestCalccedo extends CalccedoHandler{
     
     public static void main(String[] args) {
        // this is sample formula  
-       String formula="1+1+2+3Sin(30)+10";
+       String formula="1+1+2+3Sin(30)+10"
        
-       // instantiate object from TestCalccedo which inherited from CalccedoHandler
-       TestCalccedo calccedo=new TestCalccedo();
-       
+       // instantiate object from CalccedoHandler 
+       CalccedoHandler calccedoHandler=new CalccedoHandler();
+       calccedoHandler.enableDeepTrace(true);
+
        // now let's get result, just by calling calccedo calculate method
        System.out.println("Welcome to Calccedo Engine Library");
-       System.out.println("Result is "+calccedo.calculate(formula));
+       System.out.println("Result is "+calccedoHandler.calculate(formula));
        
     }  
 }
