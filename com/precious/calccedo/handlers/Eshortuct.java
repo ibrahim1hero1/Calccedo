@@ -15,7 +15,7 @@ package com.precious.calccedo.handlers;
  * @author Ibrahim Abdsaid Hanna
  *         ibrahim.seniore@gmail.com
  */
-public class Eshortuct extends CalculatorHandler{
+public class Eshortuct extends CalccedoHandler{
     
      String leftTemp;
      char operandType;
