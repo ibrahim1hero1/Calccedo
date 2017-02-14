@@ -1,16 +1,10 @@
 
-
 /*
-  This is simple code to help how to use Calccedo Engine Library
+  This is simple code to help in how to use Calccedo Engine Library
 
 */
 package testcalccedo;
-
 import com.precious.calccedo.handlers.CalccedoHandler;
-
-
-
-
 /**
  *
  * @author Ibrahim Abdsaid Hanna
@@ -25,19 +19,21 @@ public class TestCalccedo extends CalccedoHandler{
         super.enableDeepTrace(true);
         
     }
+
     
-    
+   
+     
     
     public static void main(String[] args) {
        // this is sample formula  
        String formula="1+1+2+3Sin(30)+10";
        
-       // instantiate object from CalccedoHandler
-       CalccedoHandler calccedoHandler=new CalccedoHandler();
+       // instantiate object from TestCalccedo which inherited from CalccedoHandler
+       TestCalccedo calccedo=new TestCalccedo();
        
-       // now let's get result, just by calling calccedo cslculate method
+       // now let's get result, just by calling calccedo calculate method
        System.out.println("Welcome to Calccedo Engine Library");
-       System.out.println("Result is "+calccedoHandler.calculate(formula));
+       System.out.println("Result is "+calccedo.calculate(formula));
        
     }  
 }
