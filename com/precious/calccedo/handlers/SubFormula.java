@@ -18,7 +18,7 @@ import java.util.HashMap;
  * @author Ibrahim Abdsaid Hanna
  *         ibrahim.seniore@gmail.com
  */
-public class SubFormula extends CalculatorHandler{
+public class SubFormula extends CalccedoHandler{
     
     Quote quote;   
     ArrayList<Character> list;
@@ -83,12 +83,14 @@ public class SubFormula extends CalculatorHandler{
      // detect standard operads (^), if yes processing it      
        if(subformula.contains("^")){         
          subformula=processPriority(subformula,'^');
+         if(subformula.equals("error")) return null;
        }
         if(Configuration.deepTracing)
         System.out.println("^ Subformula "+subformula);
         // detect Reminder operads, if yes processing it     
        if(subformula.contains("%")){
           subformula=processPriority(subformula,'%'); 
+          if(subformula.equals("error")) return null;
        }
         if(Configuration.deepTracing)
        System.out.println("% Subformula "+subformula);
@@ -96,14 +98,14 @@ public class SubFormula extends CalculatorHandler{
       // detect divison operads, if yes processing it     
        if(subformula.contains("/")){
            subformula=processPriority(subformula,'/');
-           
+           if(subformula.equals("error")) return null;
        }
         if(Configuration.deepTracing)
        System.out.println("/ Subformula "+subformula);
       // detect multiplication operads, if yes processing it      
        if(subformula.contains("*")){
            subformula=processPriority(subformula,'*');
-           
+           if(subformula.equals("error")) return null;
        }
         if(Configuration.deepTracing)
         System.out.println("* Subformula "+subformula);
@@ -111,6 +113,7 @@ public class SubFormula extends CalculatorHandler{
           // detect standard operads (+,-), if yes processing it      
        if(subformula.contains("+")||subformula.contains("-")){
           subformula=processStandard(subformula,list2);
+          if(subformula.equals("error")) return null;
        }
         if(Configuration.deepTracing)
       System.out.println("+- Subformula "+subformula);
@@ -133,7 +136,12 @@ public class SubFormula extends CalculatorHandler{
           }
       }
       else{
+           try{
           result=Double.parseDouble(finalQuoteNumber);
+           }
+           catch(Exception exp){
+              return null;
+           }
       }
        if(Configuration.deepTracing)
         System.out.println("Result >>>>>>>>>>>>>>>>>>>>>>>>>>>>"+result);
@@ -247,7 +255,7 @@ public class SubFormula extends CalculatorHandler{
                     result=number1/number2;
                     infinityTester=result+"";
                     if(infinityTester.equals("Infinity")||infinityTester.equals("-Infinity")){
-                        return null;
+                        return "error";
                     }
                   }
                    else if(operand=='*'){
@@ -257,7 +265,7 @@ public class SubFormula extends CalculatorHandler{
                   
                    }
                    catch(Exception ex){
-                       return null;
+                       return "error";
                        
                    }
                    if(Configuration.deepTracing){
