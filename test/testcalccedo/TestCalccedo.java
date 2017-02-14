@@ -25,7 +25,7 @@ public class TestCalccedo extends CalccedoHandler{
     
     public static void main(String[] args) {
        // this is sample formula  
-       String formula="1+1+2+3Sin(30)+10"
+       String formula="1+1+2+3Sin(30)+10";
        
        // instantiate object from CalccedoHandler 
        CalccedoHandler calccedoHandler=new CalccedoHandler();
