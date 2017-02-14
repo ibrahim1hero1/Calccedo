@@ -1,6 +1,8 @@
+
+
 /*
  *   Calccedo Library
- *   hint this code under Apache License
+ *   hint this code under ApacheLicense
  */
 
 package com.precious.calccedo.handlers;
@@ -8,6 +10,7 @@ package com.precious.calccedo.handlers;
 import com.precious.calccedo.Calccedo;
 import com.precious.calccedo.configuration.Configuration;
 import java.util.ArrayList;
+
 
 /**
  * 
@@ -20,7 +23,7 @@ public class CalccedoHandler extends Calccedo implements Handler {
     ArrayList<Character> list;
      ArrayList<Character> list2;
     
-    public CalculatorHandler(){
+    public CalccedoHandler(){
         list=new ArrayList<>();      
         list.add('S');
         list.add('C');
@@ -39,7 +42,7 @@ public class CalccedoHandler extends Calccedo implements Handler {
         list2.add('g');
         
         
-        enableDeepTrace(false);
+        
     
     }
 
@@ -260,7 +263,7 @@ public class CalccedoHandler extends Calccedo implements Handler {
                  quote=parsePartethis(formula);
                  subFormula=new SubFormula(quote);
                  quoteResult=subFormula.getQuoteResult();
-                 if(subFormula.getQuoteResult()==null){
+                 if(quoteResult==null){
                      return "error";
                  }
                  else{
@@ -298,4 +301,3 @@ public class CalccedoHandler extends Calccedo implements Handler {
 
 
   
-
