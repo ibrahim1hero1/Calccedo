@@ -226,9 +226,7 @@ public class CalccedoHandler extends Calccedo implements Handler {
   
     @Override
     public String calculate(String formula) {
-      
-       //String result="Denmark Copenhagn Crossworkers";
-        
+     
        // validate formula
        if(!initValidation(formula)) return  "error";
        
