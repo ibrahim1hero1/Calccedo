@@ -1,7 +1,7 @@
 
 /*
  *   Calccedo Library
- *   hint this code under Apache License
+ *   hint this code under ApacheLicense
  */
 
 
@@ -12,7 +12,7 @@ package com.precious.calccedo.handlers;
  * @author Ibrahim Abdsaid Hanna
  *         ibrahim.seniore@gmail.com
  */
-public class QuoteResult {
+ class QuoteResult {
     
      
      int offsetA;
