@@ -1,7 +1,7 @@
 
 /*
  *   Calccedo Library
- *   hint this code under Apache License
+ *   hint this code under ApacheLicense
  */
 
 package com.precious.calccedo.handlers;
@@ -11,7 +11,7 @@ package com.precious.calccedo.handlers;
  * @author Ibrahim Abdsaid Hanna
  *         ibrahim.seniore@gmail.com
  */
-public class Quote {
+ class Quote {
     
     
     String customOperand;
@@ -36,11 +36,6 @@ public class Quote {
         this.offsetZ=offsetZ;
     }
     
-    
-    
-    
-    
-    
-    
-    
+
+
 }
