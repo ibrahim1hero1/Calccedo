@@ -1,11 +1,12 @@
 /*
  *   Calccedo Library
- *   hint this code under Apache License
+ *   hint this code under ApacheLicense
  */
 
 
 
 package com.precious.calccedo.configuration;
+
 
 
 import com.precious.calccedo.handlers.CustomOperandMap;
@@ -16,15 +17,15 @@ import com.precious.calccedo.handlers.Infinity;
  * @author Ibrahim Abdsaid Hanna
  *         ibrahim.seniore@gmail.com
  */
-  public class Configuration {
+  public abstract class Configuration {
     
       public static boolean deepTracing=false; 
       CustomOperandMap constantOperand=new CustomOperandMap();
-    
+     
       public Class getCustomeOperandMap(){
           return CustomOperandMap.class;
       }
-    
+    // rename list and list2 here to make calccedo handler clear design
       protected void init(){
        
        // Calccedo initlization 
@@ -42,25 +43,25 @@ import com.precious.calccedo.handlers.Infinity;
         
       }
     
-    public void enableDeepTrace(boolean enabled){
+    protected void enableDeepTrace(boolean enabled){
         deepTracing=enabled;
     }
       
-    private void addCustomOperand(String customOperand, int quoteNumber,double value){
+    protected void addCustomOperand(String customOperand, int quoteNumber,double value){
       constantOperand.add(customOperand, quoteNumber, value);
     }
     
     
-    private void addCustomOperand(String customOperand, double quoteNumber,double value){
+    protected void addCustomOperand(String customOperand, double quoteNumber,double value){
       constantOperand.add(customOperand, quoteNumber, value);
     }
       
-    private void addCustomOperand(String customOperand, int quoteNumber, Object object){
+    protected void addCustomOperand(String customOperand, int quoteNumber, Object object){
       constantOperand.add(customOperand, quoteNumber, object);
     }
       
     
-    private void addCustomOperand(String customOperand, double quoteNumber, Object object){
+    protected void addCustomOperand(String customOperand, double quoteNumber, Object object){
       constantOperand.add(customOperand, quoteNumber, object);
     }
       
