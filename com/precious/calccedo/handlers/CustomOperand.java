@@ -1,6 +1,6 @@
 /*
  *   Calccedo Library
- *   hint this code under Apache License
+ *   hint this code under ApacheLicense
  */
 
 
@@ -12,23 +12,24 @@ package com.precious.calccedo.handlers;
  * @author Ibrahim Abdsaid Hanna
  *         ibrahim.seniore@gmail.com
  */
-public class CustomOperand {
+ class CustomOperand {
     
-    String operanName;
-    double value;
+     String operandName;
+     double value;
 
-    public CustomOperand(String operanName, double value) {
-        this.operanName = operanName;
+    public CustomOperand(String operandName, double value) {
+        this.operandName = operandName;
         this.value = value;
     }
 
-    public String getOperanName() {
-        return operanName;
+    public String getOperandName() {
+        return operandName;
     }
 
-    public void setOperanName(String operanName) {
-        this.operanName = operanName;
+    public void setOperandName(String operandName) {
+        this.operandName = operandName;
     }
+
 
     public double getValue() {
         return value;
