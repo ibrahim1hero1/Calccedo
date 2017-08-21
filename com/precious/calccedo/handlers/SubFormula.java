@@ -18,7 +18,7 @@ import java.util.HashMap;
  * @author Ibrahim Abdsaid Hanna
  *         ibrahim.seniore@gmail.com
  */
-public class SubFormula extends CalccedoHandler{
+ class SubFormula extends CalccedoHandler{
     
     Quote quote;   
     ArrayList<Character> list;
@@ -40,6 +40,7 @@ public class SubFormula extends CalccedoHandler{
         subformula=quote.subformula;  
         
         list.add('/');
+        list.add('%');
         list.add('*');
         list.add('+');
         list.add('-');
@@ -61,17 +62,13 @@ public class SubFormula extends CalccedoHandler{
         
     }
 
-    
-    
-    
-    
+  
     
     public QuoteResult getQuoteResult(){
       
    
-        
-        
-        if (validational(subformula)==null) return null;   
+
+       if (validational(subformula)==null) return null;   
       
       // detect standard operads (<>), if yes processing it      
        if(subformula.contains("<")){             
@@ -155,11 +152,11 @@ public class SubFormula extends CalccedoHandler{
     public Object validational(String subformula){
          
            if(subformula.charAt(1)=='/'|| subformula.charAt(1)=='*'||subformula.charAt(1)=='^'){
-             return null;      // not legal to attach operand after open partethis eg (/121*3) 
+             return null;      // not legal to attach operator after open partethis eg (/121*3) 
             }
     
            if(list.contains(subformula.charAt(subformula.length()-2))){
-               return null;      // not legal to attach operand before cosing partethis eg (/121*3) 
+               return null;      // not legal to attach operator before closing partethis eg (121*3/) 
      }
            return "okay"; // just dummy output
     }
@@ -172,6 +169,8 @@ public class SubFormula extends CalccedoHandler{
      if(isNumber(uncoverQuote(subformula))){
              return subformula;
          }
+     
+     subformula=optimizeFormula(subformula);
          
       String leftTemp="";
       String rightTemp="";
@@ -210,6 +209,9 @@ public class SubFormula extends CalccedoHandler{
                        
                        if(list.contains(subformula.charAt(j))){
                           if(subformula.charAt(j)=='-'&&operand!='^'){
+                               if(j>0&&subformula.charAt(j-1)=='E'){
+                           continue;
+                           }
                             leftTemp=subformula.charAt(j)+leftTemp; // append operand to left number
                             QLPointer=j-1;
                             break;
@@ -229,8 +231,27 @@ public class SubFormula extends CalccedoHandler{
                   
                    //obtain right number
                    for(int jj=i+1;jj<subformula.length();jj++){
-                        if(list.contains(subformula.charAt(jj))){
-                            QRPointer=jj; // stop pointer after right number to check there is another operand                     
+                       
+                         // detect E sympol which mean e^10
+                        if(subformula.charAt(jj)=='E'){
+                            eshortuct=eshortuct.process(subformula, jj);
+                            rightTemp=eshortuct.leftTemp;
+                            QRPointer=eshortuct.rightOperandIndex;
+                         break;
+                        }
+                       
+                       else if(list.contains(subformula.charAt(jj))&& list.contains(subformula.charAt(jj-1))){
+                            rightTemp=rightTemp+subformula.charAt(jj);
+                            QRPointer=jj+1; // stop pointer after right number to check there is another operand                                        
+                          
+                        }
+                        else if(list.contains(subformula.charAt(jj))){
+                              if(subformula.charAt(jj)=='-'&&operand!='^'){
+                               if(subformula.charAt(jj-1)=='E'){
+                           continue;
+                           }
+                              }
+                            QRPointer=jj;
                             break;
                        }
                        else{
@@ -244,27 +265,30 @@ public class SubFormula extends CalccedoHandler{
                    double number1=Double.parseDouble(leftTemp);
                    double number2=Double.parseDouble(rightTemp);     
                    
-                   if(operand=='^'){
-                    result=Math.pow(number1,number2);
-                      }
-                   else if(operand=='%'){
-                    result=number1%number2;
-                      }
-                    
-                   else if(operand=='/'){     
-                    result=number1/number2;
-                    infinityTester=result+"";
-                    if(infinityTester.equals("Infinity")||infinityTester.equals("-Infinity")){
-                        return "error";
+                    switch (operand) {
+                        case '^':
+                            result=Math.pow(number1,number2);
+                            break;
+                        case '%':
+                            result=number1%number2;
+                            break;
+                        case '/':
+                            result=number1/number2;
+                            infinityTester=result+"";
+                            if(infinityTester.equals("Infinity")||infinityTester.equals("-Infinity")||infinityTester.equals("NaN")){
+                                return "error";
+                            }       break;
+                        case '*':
+                            result=number1*number2;
+                            break;
+                        default:
+                            break;
                     }
-                  }
-                   else if(operand=='*'){
-                    result=number1*number2;
-                      }
                    
                   
                    }
                    catch(Exception ex){
+                       System.err.println("Priority Exception"+ex);
                        return "error";
                        
                    }
@@ -274,9 +298,12 @@ public class SubFormula extends CalccedoHandler{
                    System.out.println("QRPointer   "+QRPointer); 
                    }
                  
-                           if(subformula.charAt(QLPointer)!='('){
+                      if(QLPointer==0 && QRPointer==0){
+                              return ("("+result+")");
+                          } 
+                          else if(subformula.charAt(QLPointer)!='('){
                                 subformula=subformula.substring(0,QLPointer+1)+result+subformula.substring(QRPointer, subformula.length());
-                               
+                                subformula=optimizeFormula(subformula);
                                 i=0;
                             }
                            else if(subformula.charAt(QLPointer)=='('&&QRPointer>0 ){
@@ -320,6 +347,7 @@ public class SubFormula extends CalccedoHandler{
              return subformula;
          }
          
+       subformula=optimizeFormula(subformula);
        
       String leftTemp="";
       String rightTemp="";
@@ -375,6 +403,9 @@ public class SubFormula extends CalccedoHandler{
                        
                         else if(list.contains(subformula.charAt(j))){
                           if(subformula.charAt(j)=='-'){
+                               if(j>0&&subformula.charAt(j-1)=='E'){
+                                     continue;
+                                  }
                             leftTemp=subformula.charAt(j)+leftTemp; // append operand to left number
                             QLPointer=j-1;
                             break;
@@ -405,6 +436,11 @@ public class SubFormula extends CalccedoHandler{
                         }
    
                         else if(list.contains(subformula.charAt(jj))){
+                              if(subformula.charAt(jj)=='-'){
+                               if(subformula.charAt(jj-1)=='E'){
+                           continue;
+                           }
+                              }
                             QRPointer=jj; // sopt pointer after right number to check there is another operand                     
                             break;
                        }
@@ -431,6 +467,7 @@ public class SubFormula extends CalccedoHandler{
                     
                    }
                    catch(Exception ex){
+                       System.err.println("Standard Exception"+ex);
                        return null;
                        
                    }
@@ -441,10 +478,13 @@ public class SubFormula extends CalccedoHandler{
                    System.out.println("QRPointer   "+QRPointer); 
                     }
                       
-                
                    
-                        if(subformula.charAt(QLPointer)!='(' && subformula.charAt(QLPointer-1)!='('){   
+                        if(QLPointer==0 && QRPointer==0){
+                              return ("("+result+")");
+                          }                 
+                         else if(subformula.charAt(QLPointer)!='(' && subformula.charAt(QLPointer-1)!='('){   
                                 subformula=subformula.substring(0,QLPointer+1)+result+subformula.substring(QRPointer, subformula.length());                               
+                                subformula=optimizeFormula(subformula);
                                 i=0;
                             }
                         
@@ -540,6 +580,7 @@ public class SubFormula extends CalccedoHandler{
                                 break;
                             }
                             subformula=subformula.replaceFirst("<"+temp+">",""+sqrtResult);
+                            temp="";
                             break;
                         }
                         else{
@@ -554,6 +595,16 @@ public class SubFormula extends CalccedoHandler{
             return subformula;
             
         }
+
+    @Override
+    public String optimizeFormula(String formula) {
+      
+         formula=formula.replace("-+", "-");
+         formula=formula.replace("+-", "-");
+         formula=formula.replace("--", "+");
+         
+         return formula;
+    }
        
     
     
