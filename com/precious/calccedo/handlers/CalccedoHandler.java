@@ -1,5 +1,4 @@
 
-
 /*
  *   Calccedo Library
  *   hint this code under ApacheLicense
@@ -17,11 +16,11 @@ import java.util.ArrayList;
  * @author Ibrahim Abdsaid Hanna 
  *         ibrahim.seniore@gmail.com
  */
-public class CalccedoHandler extends Calccedo implements Handler {
+ public class CalccedoHandler extends Calccedo implements Handler {
 
     
-    ArrayList<Character> list;
-     ArrayList<Character> list2;
+   private ArrayList<Character> list;
+    private ArrayList<Character> list2;
     
     public CalccedoHandler(){
         list=new ArrayList<>();      
@@ -31,26 +30,29 @@ public class CalccedoHandler extends Calccedo implements Handler {
         list.add('L');     
         list.add('<');
         list.add('(');
+
         
         list2=new ArrayList<>();      
         list2.add('/');
+        list2.add('%');
         list2.add('+');
         list2.add('-');
         list2.add('*');
+        list2.add('^');
         list2.add('n');
         list2.add('s');
         list2.add('g');
+        list2.add('<');
+        list2.add('(');
         
-        
+        init();
         
     
     }
 
  
-    
-    
-    
-     public Quote parsePartethis(String formula) {
+  
+     private Quote parsePartethis(String formula) {
      
           
            int offsetA=0;
@@ -105,7 +107,7 @@ public class CalccedoHandler extends Calccedo implements Handler {
     }
  
      
-      public String obtainQuoteOperand(String digits){
+      private String obtainQuoteOperand(String digits){
           
           if(digits.equals("Sin")){
               return "Sin";
@@ -147,12 +149,12 @@ public class CalccedoHandler extends Calccedo implements Handler {
    
    
    
-  
 
     @Override
     public String optimizeFormula(String formula) {
      String newformula="";   
         
+     
         for(int i=0;i<formula.length();i++){
             if(list.contains(formula.charAt(i)) && i>0){
                 if(list2.contains(formula.charAt(i-1)) && i>0){
@@ -178,6 +180,7 @@ public class CalccedoHandler extends Calccedo implements Handler {
          if(Configuration.deepTracing)
         System.out.println("optinmization is >>>>>>>>>>>"+newformula);
       
+
      return newformula;
     }
 
@@ -218,7 +221,7 @@ public class CalccedoHandler extends Calccedo implements Handler {
                }
          }
        
-        return openedPartethis==0 && openedRoot==0 ? true:false;
+        return openedPartethis==0 && openedRoot==0 ;
     }
    
     
@@ -226,7 +229,9 @@ public class CalccedoHandler extends Calccedo implements Handler {
   
     @Override
     public String calculate(String formula) {
-     
+      
+       //String result="Denmark Copenhagn Crossworkers";
+        
        // validate formula
        if(!initValidation(formula)) return  "error";
        
@@ -253,7 +258,7 @@ public class CalccedoHandler extends Calccedo implements Handler {
 
    
 
-         public String calculatePartethis(String formula){
+         private String calculatePartethis(String formula){
              Quote quote;
              SubFormula subFormula;
              QuoteResult quoteResult;
@@ -299,3 +304,4 @@ public class CalccedoHandler extends Calccedo implements Handler {
 
 
   
+
