@@ -1,6 +1,6 @@
 /*
  *   Calccedo Library
- *   hint this code under Apache License
+ *   hint this code under ApacheLicense
  */
 
 
