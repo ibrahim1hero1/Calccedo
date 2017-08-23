@@ -231,7 +231,7 @@ import java.util.ArrayList;
     public String calculate(String formula) {
             
        // validate formula
-       if(!initValidation(formula)) return  "error";
+       if(!initValidation(formula)) return  "Error";
        
        // optimize formula
         formula=optimizeFormula(formula);
@@ -249,6 +249,11 @@ import java.util.ArrayList;
         String secondProcess= calculatePartethis("("+firstProcess+")");
         if(secondProcess.equals("error")){
             return "Error";
+        }
+        
+        // detect final result contain fractions, if not return result as Integer value 
+        if(secondProcess.endsWith(".0")){
+            secondProcess=secondProcess.substring(0,secondProcess.lastIndexOf(".0"));
         }
         
         return secondProcess;
