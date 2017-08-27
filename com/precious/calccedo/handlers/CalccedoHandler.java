@@ -244,8 +244,7 @@ import java.util.ArrayList;
         
         
         // include final formula inside partetehis to process it 
-        // second peocess is the final process in calccedo, just because conatins only +,-
-        
+        // second peocess is the final process in calccedo, just because conatins only +,-,*,/        
         String secondProcess= calculatePartethis("("+firstProcess+")");
         if(secondProcess.equals("error")){
             return "Error";
