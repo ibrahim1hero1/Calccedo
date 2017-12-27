@@ -8,8 +8,6 @@
 
 package com.precious.calccedo.handlers;
 
-import com.precious.calccedo.configuration.Configuration;
-
 /**
  *
  * @author Ibrahim Abdsaid Hanna
@@ -17,19 +15,21 @@ import com.precious.calccedo.configuration.Configuration;
  */
 public class Infinity {
     
-    
-    public Infinity(){
-    
-        
+    /**
+     *Constructor of Infinity class, act as default constructor
+     */
+    public Infinity(){  
     }
     
-    
+    /**
+     *
+     * @return This class to help developers descripe custom operand as infinity or not legal by passing infinity.class
+     */
     @Override
     public String toString() {
-        return "This class to help developers when custom operand divided by zero or not legal arithmatic";
+        return "This class to help developers descripe custom operand as infinity or not legal by passing infinity.class";
     }
     
     
-    
-    
+ 
 }
