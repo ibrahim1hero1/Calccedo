@@ -30,7 +30,7 @@ import com.precious.calccedo.configuration.Configuration;
          }
 
         System.err.println("Exception:");    
-        return "Calccedo Library Detect "+breakPoint+" not valid arithmatic equation, may be divided by zero";
+        return "Calccedo Library Detect "+breakPoint+" defined as infinty custom operand";
     }
     
     
