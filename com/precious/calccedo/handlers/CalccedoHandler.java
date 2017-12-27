@@ -20,8 +20,11 @@ import java.util.ArrayList;
 
     
    private ArrayList<Character> list;
-    private ArrayList<Character> list2;
+   private ArrayList<Character> list2;
     
+    /**
+     *Constructor of CalccedoHandler class which add postfix and prefix symbols while calling
+     */
     public CalccedoHandler(){
         list=new ArrayList<>();      
         list.add('S');
@@ -33,28 +36,26 @@ import java.util.ArrayList;
 
         
         list2=new ArrayList<>();      
-        list2.add('/');
-        list2.add('%');
-        list2.add('+');
-        list2.add('-');
-        list2.add('*');
-        list2.add('^');
-        list2.add('n');
-        list2.add('s');
-        list2.add('g');
-        list2.add('<');
-        list2.add('(');
-        
-        init();
-        
+        list2.add(')');
+        list2.add('>');
+        list2.add('.');
+        list2.add('0');
+        list2.add('1');
+        list2.add('2');
+        list2.add('3');
+        list2.add('4');
+        list2.add('5');
+        list2.add('6');
+        list2.add('7');
+        list2.add('8');
+        list2.add('9');
     
     }
 
  
   
      private Quote parsePartethis(String formula) {
-     
-          
+
            int offsetA=0;
            int offsetZ=0;
         
@@ -106,31 +107,12 @@ import java.util.ArrayList;
        
     }
  
-     
-      private String obtainQuoteOperand(String digits){
-          
-          if(digits.equals("Sin")){
-              return "Sin";
-          }
-          
-          else if(digits.equals("Cos")){
-              return "Cos";
-          }
-           
-          if(digits.equals("Tan")){
-              return "Tan";
-          }
-          
-          if(digits.equals("Log")){
-              return "Log";
-          }
-          else{
-              return "";
-          }
-          
-      }
-      
-   @Override
+    /**
+     * method to check this charcter is number or not
+     * @param c  any charcter  
+     * @return boolean if this number or not
+     */
+    @Override
    public boolean isNumber(char c){
        if(c=='.'){
            return true;
@@ -140,16 +122,18 @@ import java.util.ArrayList;
            return true;
        }
        
-       catch(Exception ex){
-           
+       catch(NumberFormatException ex){
            return false;
        }
        
    }
    
-   
-   
-
+    /**
+     * method to optimize formula before before passing to calculate(String formula) method 
+     * like (5Sin(30)<9>) >>>>>> (5*Sin(30)*<9>)
+     * @param formula String of formula
+     * @return optimization String of formula
+     */
     @Override
     public String optimizeFormula(String formula) {
      String newformula="";   
@@ -157,12 +141,32 @@ import java.util.ArrayList;
      
         for(int i=0;i<formula.length();i++){
             if(list.contains(formula.charAt(i)) && i>0){
-                if(list2.contains(formula.charAt(i-1)) && i>0){
-                    newformula=newformula+formula.charAt(i);
+                 if(list2.contains(formula.charAt(i-1)) && i>0){
+                     if(formula.charAt(i)=='<'){
+                      newformula=newformula+"*"+formula.charAt(i)+"(";
+                    }
+                     else{
+                    newformula=newformula+"*"+formula.charAt(i);
+                     }
                 }
-                else{
+                else if(formula.charAt(i)=='<'){
+                    newformula=newformula+formula.charAt(i)+"(";
+                }
+                  else if(isNumber(formula.charAt(i-1))){
                     newformula=newformula+"*"+formula.charAt(i);
                 }
+                else{
+                     newformula=newformula+formula.charAt(i);
+                }
+            }
+            
+            
+            
+            else if(formula.charAt(i)=='<'){
+                newformula=newformula+formula.charAt(i)+"(";
+            }
+             else if(formula.charAt(i)=='>'){
+                newformula=newformula+")"+formula.charAt(i);
             }
             else if(isNumber(formula.charAt(i))){
                 if(i>0&&(formula.charAt(i-1)==')'||formula.charAt(i-1)=='>')){
@@ -177,6 +181,8 @@ import java.util.ArrayList;
             }
             
         }
+        
+        
          if(Configuration.deepTracing)
         System.out.println("optinmization is >>>>>>>>>>>"+newformula);
       
@@ -184,7 +190,11 @@ import java.util.ArrayList;
      return newformula;
     }
 
-
+    /**
+     * method to validate formula before passing to calculate(String formula) method
+     * @param formula String of formula 
+     * @return boolean if this formula valid for calculation
+     */
     @Override
     public boolean initValidation(String formula) {
        
@@ -224,9 +234,11 @@ import java.util.ArrayList;
         return openedPartethis==0 && openedRoot==0 ;
     }
    
-    
-    
-  
+    /**
+     * backbone method in calccedo to calculate any standard formula 
+     * @param formula String text of formula like: (5Sin(30)+10*20<9*9*9*9*>)/(10*20) = 81.0125
+     * @return result as a String 
+     */
     @Override
     public String calculate(String formula) {
             
@@ -244,15 +256,11 @@ import java.util.ArrayList;
         
         
         // include final formula inside partetehis to process it 
-        // second peocess is the final process in calccedo, just because conatins only +,-,*,/        
+        // second peocess is the final process in calccedo, just because conatins only +,-
+        
         String secondProcess= calculatePartethis("("+firstProcess+")");
         if(secondProcess.equals("error")){
             return "Error";
-        }
-        
-        // detect final result contain fractions, if not return result as Integer value 
-        if(secondProcess.endsWith(".0")){
-            secondProcess=secondProcess.substring(0,secondProcess.lastIndexOf(".0"));
         }
         
         return secondProcess;
@@ -281,18 +289,20 @@ import java.util.ArrayList;
             return formula;
          }
 
+    /**
+     * method to check string inside quote is number or not
+     * @param quote String of inside quote like: (25.0) or (5*5+5)
+     * @return boolean the string inside quote is Number
+     */
     @Override
-    public boolean isNumber(String quote) {
-        
+    public boolean isNumber(String quote) { 
         try{
            Double.parseDouble(quote);
            return true;
        }
-       
-       catch(Exception ex){
+       catch(NumberFormatException ex){
             
             if(Configuration.deepTracing){
-              //  System.err.println(ex+"\n just dummy exception do in behind while validating Numbers\n");
                System.out.println("\nCalccedo Info: this is just info to help developers how Calccedo Library work");
                System.out.println("Info quote "+quote+", cannot wrapped to Double, so it will complete loop until finishing operations \n"); 
             }
@@ -300,9 +310,20 @@ import java.util.ArrayList;
        }
     }
 
-    
-    
+     /**
+     * @return This is the backbone handler class of calccedo, it recieves formula and handle all cycles to produce result
+     *         
+     */
+    @Override
+    public String toString() {
+        return "This is the backbone handler class of calccedo, it recieves formula and handle all cycles to produce result";
+    }
+
+     
 }
+
+
+  
 
 
   
