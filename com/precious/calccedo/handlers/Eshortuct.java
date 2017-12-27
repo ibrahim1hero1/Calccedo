@@ -36,7 +36,7 @@ import java.util.ArrayList;
         this.leftOperandIndex=leftOperandIndex;
         this.rightOperandIndex=rightOperandIndex;
         
-        
+       
     }
 
  
@@ -54,8 +54,7 @@ import java.util.ArrayList;
          list.add('%');
          list.add('*');
          list.add('^');
-         list.add('(');
-         list.add(')'); 
+         
          
            for(int i=Eindex;i>=0;i--){
                 if(!isNumber(subformula.charAt(i))){
