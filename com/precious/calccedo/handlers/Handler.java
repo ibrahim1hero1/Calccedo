@@ -21,12 +21,6 @@ package com.precious.calccedo.handlers;
     boolean initValidation(String formula);
     String optimizeFormula(String formula);
 
-    
-    
-    
+
  }
       
-    
-    
-  
-
