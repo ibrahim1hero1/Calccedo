@@ -31,7 +31,6 @@ import java.util.HashMap;
     
     public SubFormula(Quote quote){
         
-   
         this.quote=quote;       
         list=new ArrayList<>();
         list2=new ArrayList<>();
@@ -461,6 +460,9 @@ import java.util.HashMap;
                       result=number1+number2;
                       }                      
                   else if(operandType=='-'){
+                       if(rightTemp.indexOf("-")==0){
+                          number2=number2*-1;
+                      }
                       result=number1-number2;
                       }
                     
@@ -527,7 +529,7 @@ import java.util.HashMap;
         
         
         if(customOperandMap_Constant.get(customOperand+finalQuoteNumber)!=null){
-            if(customOperandMap_Constant.get(customOperand+finalQuoteNumber) instanceof Infinity){
+            if(customOperandMap_Constant.get(customOperand+finalQuoteNumber)  == Infinity.class){
               throw new CustomOperandException(customOperand+"("+finalQuoteNumber+")");  
             }
             CustomOperand obj=(CustomOperand)customOperandMap_Constant.get(customOperand+finalQuoteNumber);
@@ -597,13 +599,13 @@ import java.util.HashMap;
         }
 
     @Override
-    public String optimizeFormula(String formula) {
+    public String optimizeFormula(String subformula) {
       
-         formula=formula.replace("-+", "-");
-         formula=formula.replace("+-", "-");
-         formula=formula.replace("--", "+");
+         subformula=subformula.replace("-+", "-");
+         subformula=subformula.replace("+-", "-");
+         subformula=subformula.replace("--", "+");
          
-         return formula;
+         return subformula;
     }
        
     
