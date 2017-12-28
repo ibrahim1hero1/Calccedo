@@ -19,22 +19,15 @@ import java.util.ArrayList;
  public class CalccedoHandler extends Calccedo implements Handler {
 
     
-   private ArrayList<Character> list;
+   private ArrayList<Character> list = CustomOperandMap.customOperandCharacters;
    private ArrayList<Character> list2;
+   private ArrayList<String> list3 =CustomOperandMap.customOperandNames;
     
     /**
      *Constructor of CalccedoHandler class which add postfix and prefix symbols while calling
      */
-    public CalccedoHandler(){
-        list=new ArrayList<>();      
-        list.add('S');
-        list.add('C');
-        list.add('T');
-        list.add('L');     
-        list.add('<');
-        list.add('(');
+    public CalccedoHandler(){    
 
-        
         list2=new ArrayList<>();      
         list2.add(')');
         list2.add('>');
@@ -49,7 +42,7 @@ import java.util.ArrayList;
         list2.add('7');
         list2.add('8');
         list2.add('9');
-    
+
     }
 
  
@@ -80,18 +73,8 @@ import java.util.ArrayList;
            }
            else{
                try{
-               if(formula.substring(offsetA-3, offsetA).equals("Sin")){
-                    return new Quote("Sin", formula.substring(offsetA, offsetZ+1),offsetA, offsetZ+1);
-               }
-               else if(formula.substring(offsetA-3, offsetA).equals("Cos")){
-                    return new Quote("Cos",  formula.substring(offsetA, offsetZ+1), offsetA, offsetZ+1);
-               }
-               else if(formula.substring(offsetA-3, offsetA).equals("Tan")){
-                   return new Quote("Tan",  formula.substring(offsetA, offsetZ+1), offsetA, offsetZ+1);
-               }
-              
-                else if(formula.substring(offsetA-3, offsetA).equals("Log")){
-                   return new Quote("Log",  formula.substring(offsetA, offsetZ+1), offsetA, offsetZ+1);
+               if(list3.contains(formula.substring(offsetA-3, offsetA))){
+                    return new Quote(formula.substring(offsetA-3, offsetA), formula.substring(offsetA, offsetZ+1),offsetA, offsetZ+1);
                }
                 else{
                     return new Quote(formula.substring(offsetA, offsetZ+1), offsetA, offsetZ+1);
@@ -321,9 +304,6 @@ import java.util.ArrayList;
 
      
 }
-
-
-  
 
 
   
