@@ -4,7 +4,7 @@
  *   hint this code under ApacheLicense
  */
 
- package com.precious.calccedo;
+  package com.precious.calccedo;
 
 import com.precious.calccedo.configuration.Configuration;
 
@@ -32,7 +32,7 @@ public abstract class Calccedo extends Configuration{
 
     /**
      * @return Calccedo Library is calculation engine library designed to help developers for building applications that need complecated Mathematical equations, 
-     *         Calccedo is not just library, it's work as interperter and act as AI engines
+     *         Calccedo is not just library, it's work as interpreter and act as AI engines
      */
     @Override
     public String toString() {
@@ -42,4 +42,5 @@ public abstract class Calccedo extends Configuration{
      
     
 }
+
 
