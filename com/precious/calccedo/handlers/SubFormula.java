@@ -1,4 +1,3 @@
-
 /*
  *   Calccedo Library
  *   hint this code under ApacheLicense
@@ -23,7 +22,7 @@ import java.util.HashMap;
     Quote quote;   
     ArrayList<Character> list;
     ArrayList<Character> list2;
-    ArrayList<String> list3;
+    ArrayList<String> list3 =CustomOperandMap.customOperandNames;
     HashMap<String, Object> customOperandMap_Constant=CustomOperandMap.customOperandMap_Constant;  
     String subformula;
     
@@ -34,8 +33,7 @@ import java.util.HashMap;
         this.quote=quote;       
         list=new ArrayList<>();
         list2=new ArrayList<>();
-        list3=new ArrayList<>();
-        
+
         subformula=quote.subformula;  
         
         list.add('/');
@@ -51,22 +49,13 @@ import java.util.HashMap;
         list2.add('+');
         list2.add('-');
         
-        list3.add("Sin");
-        list3.add("Cos");
-        list3.add("Tan");
-        list3.add("Log");
-       
-        
-      
-        
+
     }
 
   
     
     public QuoteResult getQuoteResult(){
       
-   
-
        if (validational(subformula)==null) return null;   
       
       // detect standard operads (<>), if yes processing it      
@@ -127,6 +116,10 @@ import java.util.HashMap;
           return  new QuoteResult(quote.offsetA-3, quote.offsetZ,result);
           }
           catch(CustomOperandException ex){
+              System.err.println(ex);
+              return null;
+          }
+          catch(RuntimeException ex){
               System.err.println(ex);
               return null;
           }
@@ -524,9 +517,7 @@ import java.util.HashMap;
     
 
      
-    public double processCustomOperand(String customOperand,String finalQuoteNumber){
-        
-        
+    public double processCustomOperand(String customOperand,String finalQuoteNumber) {
         
         if(customOperandMap_Constant.get(customOperand+finalQuoteNumber)!=null){
             if(customOperandMap_Constant.get(customOperand+finalQuoteNumber)  == Infinity.class){
@@ -540,25 +531,25 @@ import java.util.HashMap;
         
         switch(customOperand){
             
-            case "Sin":
+            case "sin":
                 return Math.sin(Math.toRadians(number));
                 
-            case "Cos":
+            case "cos":
                 return Math.cos(Math.toRadians(number));
                 
-            case "Tan":
+            case "tan":
                 return Math.tan(Math.toRadians(number));
                 
-            case "Log":
+            case "log":
                 return Math.log10(number);
                 
              default:
-                 break;
+                throw new RuntimeException(customOperand+"("+finalQuoteNumber+")"+" not found in calccedo"); 
                 
         }
             
             
-            return number; // just dummy return
+         
             
         }
         
