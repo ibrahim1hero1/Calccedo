@@ -6,6 +6,7 @@
 
 package com.precious.calccedo.handlers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -23,11 +24,33 @@ public class CustomOperandMap {
      * it is contain pre dependent operands, so you should not change it's value 
      */
     public static HashMap<String, Object> customOperandMap_Constant=new HashMap<>();
+  
+     /**
+     * list to hold first character of custom operand name to pass it to CalccedoHandler Sin >>> will hold S
+     */
+    public static ArrayList<Character> customOperandCharacters=new ArrayList<>(); 
+    
+    /**
+     * list to hold custom operand name to pass it to SubFormula Handler Sin >>> will hold Sin
+     */
+    public static ArrayList<String>  customOperandNames=new ArrayList<>();
+    
+    /**
+     * configure customOperandCharacters and customOperandNames to hold prefix symbols <,(
+     */  
+    static{
+        customOperandCharacters.add('<');
+        customOperandCharacters.add('(');
+        customOperandCharacters.add('l');
+        customOperandNames.add("log");
+    }
+    
     
     /**
      *Constructor of CustomOperandMap class, act as default constructor
      */
     public  CustomOperandMap(){
+        
     }
     
     /**
@@ -38,6 +61,7 @@ public class CustomOperandMap {
      */
     public void add(String customOperand, int quoteNumber,double value){
       customOperandMap_Constant.put(customOperand+quoteNumber, new CustomOperand(customOperand+quoteNumber, value));
+      integrateCustomOperand(customOperand);
     }
     
      /**
@@ -48,6 +72,7 @@ public class CustomOperandMap {
      */
     public  void add(String customOperand, double quoteNumber,double value){
          customOperandMap_Constant.put(customOperand+quoteNumber, new CustomOperand(customOperand+quoteNumber, value));
+         integrateCustomOperand(customOperand);
     }
     
      /**
@@ -58,6 +83,7 @@ public class CustomOperandMap {
      */
     public  void add(String customOperand, int quoteNumber,Object object){
          customOperandMap_Constant.put(customOperand+quoteNumber, object);
+         integrateCustomOperand(customOperand);
     }
     
     /**
@@ -68,7 +94,18 @@ public class CustomOperandMap {
      */
     public  void add(String customOperand, double quoteNumber,Object object){
          customOperandMap_Constant.put(customOperand+quoteNumber, object);
+         integrateCustomOperand(customOperand);
     }
+    
+    /**
+     * this method to integrate custom operand characteristics into calccedo engine
+     * @param customOperand operand name>>>>>> sin,pi
+     */
+    public void integrateCustomOperand(String customOperand){
+        customOperandCharacters.add(customOperand.charAt(0));
+        customOperandNames.add(customOperand);
+    }
+    
     
     /**
      *
