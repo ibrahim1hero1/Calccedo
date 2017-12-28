@@ -50,16 +50,16 @@ import com.precious.calccedo.handlers.Infinity;
     protected void init(){
        
        if(!closeGate){ 
-        addCustomOperand("Sin",30, 0.5);
-        addCustomOperand("Sin",30.0, 0.5);
-        addCustomOperand("Cos",60, 0.5);
-        addCustomOperand("Cos",60.0, 0.5);
-        addCustomOperand("Cos",90, 0);
-        addCustomOperand("Cos",90.0, 0);
-        addCustomOperand("Tan",45,1);
-        addCustomOperand("Tan",45.0,1);
-        addCustomOperand("Tan",90,Infinity.class);
-        addCustomOperand("Tan",90.0,Infinity.class);      
+        addCustomOperand("sin",30, 0.5);
+        addCustomOperand("sin",30.0, 0.5);
+        addCustomOperand("cos",60, 0.5);
+        addCustomOperand("cos",60.0, 0.5);
+        addCustomOperand("cos",90, 0);
+        addCustomOperand("cos",90.0, 0);
+        addCustomOperand("tan",45,1);
+        addCustomOperand("tan",45.0,1);
+        addCustomOperand("tan",90,Infinity.class);
+        addCustomOperand("tan",90.0,Infinity.class);      
         closeGate=true; 
        }
       }
@@ -123,4 +123,3 @@ import com.precious.calccedo.handlers.Infinity;
     
    
 }
-
