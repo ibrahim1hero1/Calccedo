@@ -6,7 +6,7 @@ Calccedo Library is calculation engine framework built using Java language and i
 
       
 
-you can take tour in how Calccedo Engine library can do from this link
+you can take tour in how Calccedo Engine can do from this link
 
 https://ibrahim1hero1-calccedo.blogspot.com.eg/p/blog-page.html
 
@@ -14,7 +14,7 @@ https://ibrahim1hero1-calccedo.blogspot.com.eg/p/blog-page.html
 
 
 
-and this is screenshot of Calculator demo built using Calccedo Engine Library
+and this is screenshot of Calculator demo built using Calccedo Engine Framework
 
 Welcome to Calccedo Engine,
 
