@@ -2,7 +2,7 @@
 [![N|Solid](https://raw.githubusercontent.com/ibrahim1hero1/calccedo/master/readme/images/calccedo.png)](https://calccedo.herokuapp.com)
 
 
-Calccedo is a calculation engine framework based on Java language and in the future it will support all programming languages to help developers for building applications that need complex mathematical equations, Calccedo is not just framework library, it is work as interperter and act as AI engines
+Calccedo is a calculation engine framework library based on Java language and in the future it will support all programming languages to help developers for building applications that need complex mathematical equations, Calccedo is not just framework library, it is work as interperter and act as AI engines
 
       
 
