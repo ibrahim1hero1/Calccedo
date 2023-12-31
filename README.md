@@ -165,3 +165,35 @@ public class TestCalccedo extends CalccedoHandler{
 }
 </pre>
 
+<h3>Adding Constant</h3>
+
+<pre>
+  import org.calccedo.handlers.CalccedoHandler;
+/**
+ *
+ * @author Ibrahim Abdsaid Hanna
+ */
+public class TestCalccedo extends CalccedoHandler{
+    
+    public TestCalccedo(){
+      super.enableDeepTrace(true);
+      super.addConstant("sat", 1);
+      super.addConstant("sun", 2);
+      super.addConstant("mon", 3);
+      super.addConstant("tue", 4);
+      super.addConstant("wed", 5);
+      super.addConstant("thu", 6);
+      super.addConstant("fri", 7);
+     
+    }
+    
+    public static void main(String [] args){
+      TestCalccedo calccedoHandler = new TestCalccedo();
+      String formula = "sat + sun + mon + tue + wed + thu + fri";
+      String result = calccedoHandler.calculate(formula);
+      System.out.println(result);
+    }
+}
+
+  
+</pre>
