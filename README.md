@@ -97,7 +97,7 @@ import org.calccedo.handlers.CalccedoHandler;
 import org.calccedo.handlers.Infinity;
 /**
  *
- * @author Ibrahim
+ * @author Ibrahim Abdsaid Hanna
  */
 public class TestCalccedo extends CalccedoHandler{
     
@@ -115,6 +115,30 @@ public class TestCalccedo extends CalccedoHandler{
     }
 }
 
+</pre>
+
+<h3>Calculate complicated operations</h3>
+<pre>
+import org.calccedo.handlers.CalccedoHandler;
+/**
+ *
+ * @author Ibrahim Abdsaid Hanna
+ */   
+    public class TestCalccedo extends CalccedoHandler{
+    
+    public TestCalccedo(){
+      super.enableDeepTrace(true);
+    }
+    
+    public static void main(String [] args){
+      TestCalccedo calccedoHandler = new TestCalccedo();
+      String formula = "(5(1+2)+3sin(30cos(30+30))+(5*7+10%2)+(10^21+5E10)/5)";
+      String result = calccedoHandler.calculate(formula);
+      System.out.println(result);
+    }
+}
+  
+  
 </pre>
 
 
