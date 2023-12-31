@@ -34,6 +34,24 @@ you can build large complicated mathematical application using Calccedo-V2
 
 <h1>Development</h1>
 <h3></h3>Calculate simple operation</h3>
+import com.precious.calccedo.handlers.CalccedoHandler;
+/**
+ *
+ * @author Ibrahim
+ */   
+    public class TestCalccedo extends CalccedoHandler{
+    
+    public TestCalccedo(){
+      super.enableDeepTrace(true);
+    }
+    
+    public static void main(String [] args){
+      TestCalccedo calccedoHandler = new TestCalccedo();
+      String formula = "1+5+sin(30)+20+70+80+90";
+      String result = calccedoHandler.calculate(formula);
+      System.out.println(result);
+    }
+}
 
 
 
