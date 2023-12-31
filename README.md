@@ -286,3 +286,14 @@ E	Power 10	5E10	50000000000
 pi	constant of (pi)	2pi	2 * 3.14
 PI	constant of (PI)	3PI	3 * 3.14
 </pre>
+
+<br/>
+
+
+<img src="https://raw.githubusercontent.com/ibrahim1hero1/calccedo/Calccedo-v2/readme/images/ibrahim.jpg" data-canonical-src="https://raw.githubusercontent.com/ibrahim1hero1/calccedo/Calccedo-v2/readme/images/ibrahim.jpg" width="500" height="500" />
+
+
+
+
+
+
