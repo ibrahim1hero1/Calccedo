@@ -138,8 +138,30 @@ import org.calccedo.handlers.CalccedoHandler;
     }
 }
   
-  
 </pre>
 
-
+<h3>Adding Variable</h3>
+<pre>
+  
+import org.calccedo.handlers.CalccedoHandler;
+/**
+ *
+ * @author Ibrahim Abdsaid Hanna
+ */
+public class TestCalccedo extends CalccedoHandler{
+    
+    public TestCalccedo(){
+      super.enableDeepTrace(true);
+      super.addVariable("x", 3);
+      super.addVariable("y", 3);
+    }
+    
+    public static void main(String [] args){
+      TestCalccedo calccedoHandler = new TestCalccedo();
+      String formula = "x+y";
+      String result = calccedoHandler.calculate(formula);
+      System.out.println(result);
+    }
+}
+</pre>
 
