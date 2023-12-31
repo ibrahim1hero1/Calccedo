@@ -3,7 +3,7 @@
 
 <h3> Introduction </h3>
 
-Calccedo-V2 is the next revolution of calccedo, it support many reach features like addSemantic(), like add addVariable(), like addConstant(), like injectFunction()
+Calccedo-V2 is the next revolution of calccedo, it support many rich features like addSemantic(), like addVariable(), like addConstant(), like injectFunction()
 
 
 <br/>
