@@ -266,3 +266,23 @@ public class TestCalccedo extends CalccedoHandler{
   
 </pre>
 
+<pre>
+  All operations that calccedo can do
+
+#	Operation name	Example	Result
++	Addition	1+2	3
+-	Subtraction	80-10	70
+*	Multiplication	5*5	25
+/	Deviation	27/3	9
+%	Reminder	5393%3	2
+^	Power	2^5	32
+<>	Sqrt	<9>	3
+( )	Parenthesis	(1+1(5*5))	26
+Sin	sin	sin(30)	0.5
+Cos	cos	cos(60)	0.5
+Tan	tan	tan(45)	1
+Log	log	log(10)	1
+E	Power 10	5E10	50000000000
+pi	constant of (pi)	2pi	2 * 3.14
+PI	constant of (PI)	3PI	3 * 3.14
+</pre>
