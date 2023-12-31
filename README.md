@@ -18,11 +18,14 @@ Calccedo-V2 is the next revolution of calccedo, it support many reach features l
 
 
 <a style="font-weight: bold;"> Features: </a>
+<pre>
 add semantics like Sin(30) = 0.5
 add variables like x=10
 add constants like PI = 3.14
 inject functions like f(x)=x^2+2x+1
 you can build large complicated mathematical application using Calccedo-V2
+
+  </pre>
 
 
 
