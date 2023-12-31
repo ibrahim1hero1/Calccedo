@@ -67,5 +67,27 @@ import org.calccedo.handlers.CalccedoHandler;
      addSemantic(String semanticName,int quoteNumber,Object object);
      addSemantic(String semanticName,double quoteNumber,Object object);
     </pre>
+    <pre>
+      import org.calccedo.handlers.CalccedoHandler;
+/**
+ *
+ * @author Ibrahim Abdsaid Hanna
+ */    
+ public class TestCalccedo extends CalccedoHandler{
+    
+    public TestCalccedo(){
+      super.enableDeepTrace(false);
+      super.addSemantic("Sin",30,0.5);
+      super.addSemantic("Sin",30.0,0.5);
+    }
+    
+    public static void main(String [] args){
+      TestCalccedo calccedoHandler = new TestCalccedo();
+      String formula = "Sin(30)";
+      String result = calccedoHandler.calculate(formula);
+      System.out.println(result);
+    }
+}
+    </pre>
 
 
