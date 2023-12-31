@@ -224,3 +224,45 @@ public class Equations {
 }
 
 </pre>
+
+<h6></h6>second step: create class that inject function in previous class</h6>
+<pre>
+  import org.calccedo.handlers.CalccedoHandler;
+/**
+ *
+ * @author Ibrahim Abdsaid Hanna
+ */
+public class TestCalccedo extends CalccedoHandler{
+    
+    public TestCalccedo(){
+       super.enableDeepTrace(true);
+       super.injectFunction(Equations.class,"f");
+       
+       /*
+          you can also rename injectedFunction to any name you want like this: 
+       */
+       super.injectFunction("fn",Equations.class,"f");
+    }
+    
+    public static void main(String [] args){
+    
+     TestCalccedo calccedoHandler = new TestCalccedo();
+     
+      String formula = "f(50)";
+      String result = calccedoHandler.calculate(formula);
+      System.out.println(result);
+      
+      
+      // you will notice that calccedo handle fn(50) as f(50) because they are reference to same function
+      formula = "fn(50)";
+      String result = calccedoHandler.calculate(formula);
+      
+      
+      
+      System.out.println(result);
+    }
+}
+
+  
+</pre>
+
