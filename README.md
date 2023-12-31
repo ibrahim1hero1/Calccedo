@@ -195,5 +195,9 @@ public class TestCalccedo extends CalccedoHandler{
     }
 }
 
-  
 </pre>
+
+
+<h3>Inject Function</h3>
+<h5>calccedo so easy to calculate function formula like f(x) = x^2+2x+1 calccedo make it easy
+first step: we will create class that implement method that do function formula</h5>
