@@ -201,3 +201,26 @@ public class TestCalccedo extends CalccedoHandler{
 <h3>Inject Function</h3>
 <h5>calccedo so easy to calculate function formula like f(x) = x^2+2x+1 calccedo make it easy</h5>
 <h6></h6>first step: we will create class that implement method that do function formula</h6>
+<pre>
+  
+/**
+ *
+ * @author Ibrahim Abdsaid Hanna
+ */
+public class Equations {
+
+    /* implement f(x) = x^2+2x+1
+       important! each time you want to implement formula, you should follow this standard steps in calccedo 
+       which mean you should declare method as it is methodName(Number... numbers) for every formula you want to inject
+    */
+    
+    
+   public double f(Number...  numbers){
+      double result=0; 
+      result = numbers[0]^2 + 2*numbers[0] + 1;  
+      return result;
+    }    
+    
+}
+
+</pre>
