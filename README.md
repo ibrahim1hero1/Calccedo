@@ -40,7 +40,7 @@ you can build large complicated mathematical application using Calccedo-V2
 import org.calccedo.handlers.CalccedoHandler;
 /**
  *
- * @author Ibrahim
+ * @author Ibrahim Abdsaid Hanna
  */   
     public class TestCalccedo extends CalccedoHandler{
     
