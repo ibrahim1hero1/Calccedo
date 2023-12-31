@@ -59,3 +59,13 @@ import org.calccedo.handlers.CalccedoHandler;
     }
 }
 </pre>
+
+<h3>Adding Sin(30) to calccedo as a semantic Sin(30)=0.5</h3>
+     <pre>    
+     addSemantic(String semanticName,int quoteNumber,double value);
+     addSemantic(String semanticName,double quoteNumber,double value);
+     addSemantic(String semanticName,int quoteNumber,Object object);
+     addSemantic(String semanticName,double quoteNumber,Object object);
+    </pre>
+
+
