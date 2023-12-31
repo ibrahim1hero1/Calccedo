@@ -68,7 +68,7 @@ import org.calccedo.handlers.CalccedoHandler;
      addSemantic(String semanticName,double quoteNumber,Object object);
     </pre>
     <pre>
-      import org.calccedo.handlers.CalccedoHandler;
+import org.calccedo.handlers.CalccedoHandler;
 /**
  *
  * @author Ibrahim Abdsaid Hanna
