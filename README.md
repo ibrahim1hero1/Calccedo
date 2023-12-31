@@ -30,5 +30,10 @@ you can build large complicated mathematical application using Calccedo-V2
   </pre>
 
 
+<br/>
+
+<h1>Development</h1>
+<h3></h3>Calculate simple operation</h3>
+
 
 
