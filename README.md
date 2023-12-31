@@ -91,4 +91,31 @@ import org.calccedo.handlers.CalccedoHandler;
 }
     </pre>
 
+<h3>Adding Tan(90) to calccedo as an Illegal custom operand Tan(90)=Error</h3>
+<pre>
+import org.calccedo.handlers.CalccedoHandler;
+import org.calccedo.handlers.Infinity;
+/**
+ *
+ * @author Ibrahim
+ */
+public class TestCalccedo extends CalccedoHandler{
+    
+    public TestCalccedo(){
+      super.enableDeepTrace(false);
+      super.addSemantic("Tan",90,Infinity.class);
+      super.addSemantic("Tan",90.0,Infinity.class);
+    }
+    
+    public static void main(String [] args){
+      TestCalccedo calccedoHandler = new TestCalccedo();
+      String formula = "Tan(90)";
+      String result = calccedoHandler.calculate(formula);
+      System.out.println(result);
+    }
+}
+
+</pre>
+
+
 
