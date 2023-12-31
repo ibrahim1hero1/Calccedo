@@ -69,11 +69,12 @@ import org.calccedo.handlers.CalccedoHandler;
     </pre>
     <pre>
       import org.calccedo.handlers.CalccedoHandler;
-    /**
-      *
-      * @author Ibrahim Abdsaid Hanna
-     */    
- public class TestCalccedo extends CalccedoHandler{
+/**
+ *
+ * @author Ibrahim Abdsaid Hanna
+ */   
+    public class TestCalccedo extends CalccedoHandler{
+    
     
     public TestCalccedo(){
       super.enableDeepTrace(false);
