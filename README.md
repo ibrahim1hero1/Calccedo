@@ -49,6 +49,7 @@ import org.calccedo.handlers.CalccedoHandler;
     
     public TestCalccedo(){
       super.enableDeepTrace(true);
+      super.configAngel(Angel.DEGREES);
     }
     
     public static void main(String [] args){
