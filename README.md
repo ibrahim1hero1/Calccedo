@@ -1,4 +1,4 @@
-<a style="font-size: 50px;"> Introduction </a>
+<h1> Introduction </h1>
 
 <br/>
 
