@@ -37,7 +37,7 @@ you can build large complicated mathematical application using Calccedo-V2
 
 <br/>
 <pre>
-import com.precious.calccedo.handlers.CalccedoHandler;
+import org.calccedo.handlers.CalccedoHandler;
 /**
  *
  * @author Ibrahim
