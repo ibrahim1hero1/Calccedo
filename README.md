@@ -290,7 +290,7 @@ PI	constant of (PI)	3PI	3 * 3.14
 <br/>
 
 
-<img src="https://raw.githubusercontent.com/ibrahim1hero1/calccedo/Calccedo-v2/readme/images/ibrahim.jpg" data-canonical-src="https://raw.githubusercontent.com/ibrahim1hero1/calccedo/Calccedo-v2/readme/images/ibrahim.jpg" width="500" height="500" />
+<img src="https://raw.githubusercontent.com/ibrahim1hero1/calccedo/Calccedo-v2/readme/images/ibrahim.jpg" data-canonical-src="https://raw.githubusercontent.com/ibrahim1hero1/calccedo/Calccedo-v2/readme/images/ibrahim.jpg" width="500" height="300" />
 
 
 
